@@ -4,7 +4,7 @@ public class InterfaceDemo {
 }
 
 interface CreditCard5 {
-
+// By default methods in an interface are public and abstract
 //    void makePayment();
 //    public void makePayment();
 public abstract void makePayment();

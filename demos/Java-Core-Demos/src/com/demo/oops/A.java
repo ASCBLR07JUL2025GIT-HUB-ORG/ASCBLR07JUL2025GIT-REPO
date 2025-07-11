@@ -16,6 +16,7 @@ class A
       {
        A obj1 = new A();
        A obj2 = new A();
+       // This checks for identicality by default.
      System.out.print(obj1.equals(obj2));
       }
     }
