@@ -24,5 +24,5 @@ class BankAccount implements CreditCard5, NetBanking5 {
 }
 
 interface VIPCreditCard extends CreditCard5 {
-    
+
 }
