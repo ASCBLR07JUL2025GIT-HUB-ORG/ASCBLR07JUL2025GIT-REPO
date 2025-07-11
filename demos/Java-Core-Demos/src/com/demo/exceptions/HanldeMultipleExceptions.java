@@ -32,7 +32,6 @@ public class HanldeMultipleExceptions {
             catch(NullPointerException nullPointerException){
                 System.out.println("Instantiate the calculator....");
             }
-
             System.out.println("Check index...");
         }
         System.out.println("Thankyou!");
