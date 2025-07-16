@@ -1,19 +1,80 @@
-:keyboard: **LAB 3**  
+# :keyboard: **LAB 3**
 
-Note: All classes should be organized into packages that follow a well-defined hierarchy.
+---
 
-1) Create a class Movie with attributes - movie name, produced by, directed by, duration, year, category (comedy/action/..). Write necessary methods that accept and display the information. Create the constructors based on the below rules.
-  - Movie name and produced by are mandatory fields and should be supplied at the time of creating the object
-  - Compiler should raise an error when you try to create Movie object without passing any parameters.
-  - Write a constructor which accepts all the attributes as parameters while creating the object. From this constructor call the constructor (mentioned at point a) to initialize mandatory fields
+### :dart: Objectives
 
-2) In the above class create a static variable moviesCount. Write necessary methods to get the values. Every time an object of Movie is created, increment the value of moviesCount variable.
+- **Organize classes into packages with a clear hierarchy.**
+- **Implement constructors, static variables, and read-only fields.**
+- **Demonstrate inheritance and use of the `super` keyword.**
+- **Concatenate and display object details.**
 
-3) Create a movieId field. Make this variable as a readOnly variable (i.e. make it private and write only a getter method). Generate movieId value by using the below formula
-<br> `movieId=”movieName”+”_”+moviesCount`
-<br> eg. if the Movie name is “Hello” and the value of moviesCount variable is 31, then store Hello_31
+---
 
-4) Define a new class SpecialMovie which contains all the attributes of Movie and other attributes to store the technology used for soundEffects and visualEffects. Define another class InternationalMovie which contains all attributes of Movie class and other attributes to store country and language.
-  - Write necessary classes, constructors and methods for storing and displaying additional information. Hint: use super keyword to call the methods/constructor of super class.
+### :rocket: Tasks
 
-5) In the Movie class write a method called showDetails() which concatenates the value of all the attributes and returns it as a String
+#### 1. :gear: Create a `Movie` class
+
+- **Attributes:**  
+  - `movieName`  
+  - `producedBy`  
+  - `directedBy`  
+  - `duration`  
+  - `year`  
+  - `category` (e.g., comedy/action/...)
+
+- **Requirements:**  
+  - Write methods to accept and display information.
+  - **Constructors:**
+    - `movieName` and `producedBy` are **mandatory** and must be supplied when creating the object.
+    - Compiler should raise an error if a `Movie` object is created without parameters.
+    - Write a constructor that accepts all attributes and calls the mandatory-fields constructor using `this()`.
+
+---
+
+#### 2. :bulb: Static Variable
+
+- In the `Movie` class, create a static variable `moviesCount`.
+- Write methods to get its value.
+- Increment `moviesCount` every time a `Movie` object is created.
+
+---
+
+#### 3. :shield: Read-Only Field
+
+- Add a `movieId` field (private, read-only, getter only).
+- Generate `movieId` as:  
+  ```
+  movieId = movieName + "_" + moviesCount
+  ```
+  - Example: If `movieName` is "Hello" and `moviesCount` is 31, then `movieId` is `Hello_31`.
+
+---
+
+#### 4. :triangular_ruler: Inheritance
+
+- **SpecialMovie**: Inherits from `Movie`, adds:
+  - `soundEffectsTechnology`
+  - `visualEffectsTechnology`
+- **InternationalMovie**: Inherits from `Movie`, adds:
+  - `country`
+  - `language`
+- Write constructors and methods for additional info.
+- Use `super` to call superclass methods/constructors.
+
+---
+
+#### 5. :test_tube: Show Details
+
+- In `Movie`, write a method `showDetails()` that concatenates all attribute values and returns as a `String`.
+
+---
+
+### :white_check_mark: Example
+
+```java
+Movie m = new Movie("Hello", "XYZ Productions");
+System.out.println(m.getMovieId()); // Output: Hello_1
+```
+
+---
