@@ -20,7 +20,7 @@ public class JDBCSelectStatement {
 //            String url = "jdbc:sqlserver://localhost:1433;databaseName=TestDB;user=sa;password=sqlserver;";
             String url = "jdbc:sqlserver://localhost:1433;databaseName=TestDB;user=sa;password=sqlserver;trustServerCertificate=true;";
 
-
+// DriverManager.getConnection() method is used to establish a connection to the database using the provided URL, username, and password.
             connection = DriverManager.getConnection(url);
             System.out.println("Connection established!");
 
