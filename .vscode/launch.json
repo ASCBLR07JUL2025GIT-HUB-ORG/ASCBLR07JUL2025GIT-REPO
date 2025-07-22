@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DynamicPolymorphismEx",
+            "request": "launch",
+            "mainClass": "com.demo.inheritance.DynamicPolymorphismEx",
+            "projectName": "ASCBLR07JUL2025GIT-REPO_f2d67a0f"
+        },
+        {
+            "type": "java",
+            "name": "StaticPolymorphismEx",
+            "request": "launch",
+            "mainClass": "com.demo.inheritance.StaticPolymorphismEx",
+            "projectName": "ASCBLR07JUL2025GIT-REPO_f2d67a0f"
+        },
+        {
+            "type": "java",
             "name": "JDBCDel",
             "request": "launch",
             "mainClass": "com.demo.jdbc.JDBCDel",
