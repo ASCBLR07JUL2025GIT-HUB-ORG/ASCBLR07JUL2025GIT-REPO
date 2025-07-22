@@ -94,6 +94,8 @@ ALTER LOGIN sa ENABLE;
 **Instructions:**  
 - Download Microsoft JDBC Driver  
 - https://learn.microsoft.com/en-us/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server
+- Direct link:
+- https://go.microsoft.com/fwlink/?linkid=2325115
 - Extract the ZIP  
 - Copy: `mssql-jdbc-12.4.2.jre8.jar` (for Java 8)  
 - Place it in: `C:\jdbc-driver\`  
