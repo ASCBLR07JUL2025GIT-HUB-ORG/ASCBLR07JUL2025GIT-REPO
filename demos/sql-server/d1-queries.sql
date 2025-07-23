@@ -23,6 +23,11 @@ VALUES
 (3, 'sam.wilson@example.com', 'Wilson');
 
 Select * from users;
+Select * from users order by user_id desc;
+Select * from users where user_id between 2000 and 2099;
+Select * from users where user_id >= 2000 and user_id <= 2099;
+Select * from users where user_id not between 2000 and 2099;
+
 Select * from users
 order by user_id desc;
 

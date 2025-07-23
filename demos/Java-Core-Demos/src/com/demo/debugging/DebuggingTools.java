@@ -12,6 +12,7 @@ salaryCalculator();
     }
     public static double  rakhiBonus(){
        int rakhi = 1000;
+       int i = 100/0;
        int sweets = -500;
        return rakhi+sweets + randomBonus();
     }
