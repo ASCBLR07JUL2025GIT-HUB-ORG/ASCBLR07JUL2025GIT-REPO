@@ -22,6 +22,8 @@ VALUES
 (2, 'jane.smith@example.com', 'Smith'),
 (3, 'sam.wilson@example.com', 'Wilson');
 
+
+delete from users where user_id > 5;
 Select * from users;
 Select * from users order by user_id desc;
 Select * from users where user_id between 2000 and 2099;
