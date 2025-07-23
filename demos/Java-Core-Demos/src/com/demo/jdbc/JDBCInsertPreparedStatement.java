@@ -21,8 +21,7 @@ public class JDBCInsertPreparedStatement {
             System.out.println("Connection established!");
 
             // String insertQuery = "INSERT INTO Users (user_id, email, last_name) VALUES (?, ?, ?)";
-   
-            String insertQuery = "INSERT INTO Users ( email, last_name,user_id) VALUES (?, ?, ?)";
+            String insertQuery = "INSERT INTO Users (user_id, email, last_name) VALUES (?, ?, ?)";
             preparedStatement = connection.prepareStatement(insertQuery);
 
             // Accept one row from the user
@@ -37,9 +36,9 @@ public class JDBCInsertPreparedStatement {
             String lastName = scanner.nextLine();
 
             // Insert the user-provided row
-            preparedStatement.setInt(3, userId);
-            preparedStatement.setString(1, email);
-            preparedStatement.setString(2, lastName);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setString(2, email);
+            preparedStatement.setString(3, lastName);
             int rowsInserted = preparedStatement.executeUpdate();
             System.out.println(rowsInserted + " row(s) inserted.");
 
