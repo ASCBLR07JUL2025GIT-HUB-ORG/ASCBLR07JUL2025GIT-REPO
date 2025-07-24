@@ -51,3 +51,8 @@ SELECT * FROM Products;
 SELECT * FROM Users where user_id=1 or user_id=2;
 SELECT * FROM Users where user_id=1 and user_id=2;
 SELECT * FROM Users where user_id=1 and user_id=2 or user_id=1 and user_id=2;
+
+SELECT @@VERSION
+
+USE AdventureWorksLT2022;
+SELECT * FROM SalesLT.ADDRESS;
