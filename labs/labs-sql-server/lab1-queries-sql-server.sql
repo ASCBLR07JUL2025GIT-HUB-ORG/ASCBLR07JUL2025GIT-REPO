@@ -1,0 +1,111 @@
+-- Query 1: Select all customers
+-- Query 2: Select all customers ordered by first name
+-- Query 3: Select all customers ordered by first name ascending
+-- Query 4: Select all customers ordered by first name descending
+-- Query 5: Select all customers ordered by the third column
+-- Query 6: Select all customers ordered by the third column descending
+-- Query 7: Select customers with CustomerID less than 6
+-- Query 8: Select customers with last name 'GUINESS'
+-- Query 9: Select all customers ordered by first name
+-- Query 10: Select all customers ordered by first name ascending and last name descending
+-- Query 11: Select all customers ordered by third column ascending, second column descending
+-- Query 12: Select customers where condition is always false
+-- Query 13: Select customers where condition is always true
+-- Query 14: Select customers where 1 equals 1 (always true)
+-- Query 15: Select customers where 1 equals 2 (always false)
+-- Query 16: Count all customers
+-- Query 17: Select specific columns from SalesOrderHeader with aliases
+-- Query 18: Select all sales order headers
+-- Query 19: Select constant values with aliases from SalesOrderHeader
+-- Query 20: Select all sales order details
+-- Query 21: Select LineTotal and its rounded value from SalesOrderDetail
+-- Query 22: Select rounded value of 8.45 for each row in SalesOrderDetail
+-- Query 23: Select rounded value of 8.5 for each row in SalesOrderDetail
+-- Query 24: Select rounded value of -14.33
+-- Query 25: Select rounded value of 1.234 to 0 decimal places
+-- Query 26: Select rounded value of -14.73
+-- Query 27: Select rounded value of 1.234 to 1 decimal place
+-- Query 28: Select rounded value of 1234.567 to nearest 10
+-- Query 29: Select rounded value of 1256.567 to nearest 100 with alias
+-- Query 30: Select LineTotal from SalesOrderDetail
+-- Query 31: Select LineTotal rounded to 0 and 1 decimal places from SalesOrderDetail
+-- Query 32: Select floor of 1.2
+-- Query 33: Select ceiling of 1.2
+-- Query 34: Select floor of -1.2
+-- Query 35: Select ceiling of -1.2
+-- Query 36: Add 1 and 1, alias as 'ADD'
+-- Query 37: Add string '1' and '1', alias as 'ADD'
+-- Query 38: Add string '1A' and '1', alias as 'ADD'
+-- Query 39: Add string '1A' and 'B', alias as 'ADD'
+-- Query 40: Add string 'A2' and '1', alias as 'ADD'
+-- Query 41: Add string 'A2' and '2', alias as 'ADD'
+-- Query 42: Add string 'A2' and 'A2', alias as 'ADD'
+-- Query 43: Concatenate 1 and 1, alias as 'CONCATENATE'
+-- Query 44: Concatenate '1' and '1', alias as 'CONCATENATE'
+-- Query 45: Concatenate 'A2' and '2', alias as 'CONCATENATE'
+-- Query 46: Concatenate 'RED', ' GREEN', ' BLUE', alias as 'COLORS'
+-- Query 47: Select all customers
+-- Query 48: Select CustomerID and concatenated full name
+-- Query 49: Select first names in lowercase
+-- Query 50: Select first names in uppercase
+-- Query 51: Select first two letters of first names
+-- Query 52: Select first two letters of first names in lowercase
+-- Query 53: Select all customers
+-- Query 54: Concatenate reversed last and first names
+-- Query 55: Reverse concatenated full name, alias as 'REVERSE FULL NAME'
+-- Query 56: Concatenate last name and first initial from actor table
+-- Query 57: Select reversed first names
+-- Query 58: Select ModifiedDate from Customer
+-- Query 59: Format ModifiedDate as mm/dd/yy, alias as 'LAST UPDATE'
+-- Query 60: Format ModifiedDate as mm-dd-yy, alias as 'LAST UPDATE'
+-- Query 61: Select week number from ModifiedDate
+-- Query 62: Select SalesOrderDetail_DATE from SalesOrderDetail
+-- Query 63: Select all customers
+-- Query 64: Select first names ordered by first name
+-- Query 65: Select distinct first names ordered by first name
+-- Query 66: Count all customers
+-- Query 67: Count non-null first names in Customer
+-- Query 68: Count distinct first names in Customer
+-- Query 69: Count customers with first name 'NICK'
+-- Query 70: Select customers with first name 'NICK'
+-- Query 71: Select customers with CustomerID less than 5
+-- Query 72: Select customers with CustomerID between 1 and 5
+-- Query 73: Select customers with CustomerID not between 1 and 5
+-- Query 74: Select customers with first name starting with 'A', ordered by first name ascending
+-- Query 75: Select customers with first name less than or equal to 'AL%'
+-- Query 76: Select customers with first name length equal to 4
+-- Query 77: Select actors with first name of exactly 4 characters
+-- Query 78: Select customers with last name ending in 'y' and length 5, ordered by first name
+-- Query 79: Select customers with last name length 5 and ending with 'y', ordered by last name
+-- Query 80: Select customers with first name 'KENNETH'
+-- Query 81: Select customers with first name 'KENNETH', CustomerID < 100, and last name ending with 'I' or 'W'
+-- Query 82: Select customers with CustomerID in specific list
+-- Query 83: Select customers with CustomerID not in specific list
+-- Query 84: Select customers where actor_id matches any of specific values
+-- Query 85: Select customers where actor_id does not match any of specific values
+-- Query 86: Select customers whose last name matches any customer with first name 'CUBA'
+-- Query 87: Select customers with last name 'OLIVIER', 'ALLEN', or 'BIRCH', ordered by CustomerID ascending
+-- Query 88: Select customers whose last name matches any customer with first name 'CUBA'
+-- Query 89: Select all customers ordered by last name
+-- Query 90: Select all addresses
+-- Query 91: Set Address2 to NULL for all addresses
+-- Query 92: Set Address2 to 'DEMO Address' where Address_ID is 1
+-- Query 93: Set Address2 to 'DEMO Address 2' where Address_ID is 2
+-- Query 94: Select addresses where Address2 is not NULL
+-- Query 95: Select addresses where Address2 is NULL
+-- Query 96: Set Address2 to empty string where Address_ID is 3
+-- Query 97: Select addresses where Address2 is NULL
+-- Query 98: Select addresses where Address2 is not NULL
+-- Query 99: Select addresses where Address2 is empty string
+-- Returns the total number of addresses in the Address table
+-- Query 91: Set Address2 to NULL for all addresses
+-- Query 92: Set Address2 to 'DEMO Address' where Address_ID is 1
+-- Query 93: Set Address2 to 'DEMO Address 2' where Address_ID is 2
+-- Query 94: Select addresses where Address2 is not NULL
+-- Query 95: Select addresses where Address2 is NULL
+-- Query 96: Set Address2 to empty string where Address_ID is 3
+-- Query 97: Select addresses where Address2 is NULL
+-- Query 98: Select addresses where Address2 is not NULL
+-- Query 99: Select addresses where Address2 is empty string
+
+-- WRITE YOUR OWN QUERIES.
