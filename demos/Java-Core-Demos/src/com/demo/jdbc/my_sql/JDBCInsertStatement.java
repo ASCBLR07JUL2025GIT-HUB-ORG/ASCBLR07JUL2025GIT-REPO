@@ -1,4 +1,4 @@
-package com.demo.jdbc;
+package com.demo.jdbc.my_sql;
 
 import java.sql.*;
 
