@@ -2,13 +2,16 @@ package com.ecz.ui;
 
 import com.ecz.model.Product;
 import com.ecz.service.ProductService;
+import com.ecz.service.ProductServiceDbImpl;
 import com.ecz.service.ProductServiceImpl;
 
 import java.util.List;
 
 public class MenuUI {
 //    ProductServiceAI productService = new ProductServiceAIImpl();
-    ProductService productService = new ProductServiceImpl();
+//    ProductService productService = new ProductServiceImpl();
+//ProductService productService = new ProductServiceImpl();
+    ProductService productService = new ProductServiceDbImpl();
 //    What is UI?
 //    UI stands for User Interface. It is the part of the application that the user interacts with
     void accessMenu() {
