@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<body style="background-color: antiquewhite;">
+    <h1>Our Registration Form</h1>
+ <form id="registration-form" style="margin-left:50px;margin-top: 50px; color:green">
+    <div style="height :50px">
+    Name :
+    <input type="text" id="user-name" required value="John Doe"> <br/><br/>
+    Password :
+    <input type="password" id = "user-password" required value="Password123" placeholder="Enter your password"> <br/><br/>
+    Gender :
+    <input type="radio" name="gender" checked required>Male
+    <input type="radio" name="gender">Female  <br/><br/>
+<!-- The fieldset element groups related elements in a form
+ The legend element represents a caption for the content of its parent fieldset -->
+    <fieldset style="width:300px">
+        <legend>Food Preference</legend>
+        <input type="radio" checked="checked" name="food" required> Veg
+        <input type="radio" name="food"> Non-Veg <br/><br/>
+    </fieldset>
+    <br>
+    Nationality:
+    <select id="nationality" required>
+        <option value="">--Select--</option>
+        <option value="indian" selected>Indian</option>
+        <option value="american">American</option>
+        <option value="british">British</option>
+        <option value="canadian">Canadian</option>
+        <option value="other">Other</option>
+    </select><br/><br/>
+
+    Email:
+    <input type="email" id="user-email" required value="john.doe@example.com">
+    <!-- <input id="user-email" required type="text"
+       pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+       value="john.doe@example.com"> -->
+           <br/><br/>
+    Phone:
+    <input type="tel" id="user-phone" required pattern="\d{10,15}" value="9876543210"><br/><br/>
+    Date of Birth:
+    <input type="date" id="user-dob" required value="1990-01-01"><br/><br/>
+    Address:
+    <textarea id="user-address" rows="2" cols="30" required>123 Main Street, City</textarea><br/><br/>
+
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+ </form>   
+ </div>
+</body>
+</html>

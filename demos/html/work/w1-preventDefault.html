@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- lang="en" is for specifying the language of the document is English. The other languages can be specified using their respective language codes, such as lang="fr" for French or lang="es" for Spanish.     -->
+<html lang="en">
+
+<head>
+    <!-- The meta charset tag specifies the character encoding for the HTML document
+     UTF-8 is used for Unicode characters like Emojis and UTF-16 is used for characters from various languages. Some of UTF-16 languages are Chinese, Japanese, and Korean. -->
+    <meta charset="UTF-8">
+    <!-- The meta tag is used to specify the viewport settings for responsive web design.
+     It ensures that the page is rendered correctly on different devices and screen sizes. 
+     The viewport is the user's visible area of a web page.
+     The initial-scale=1.0 part sets the initial zoom level when the page is first loaded by the browser. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="registration-form">
+        <div>
+            Name: <input type="text" id="user-name" value="user" required>
+        </div>
+        <div>
+            Password: <input type="password" id="user-password" required value="Password123" >
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    <!-- <script>
+        var userName = document.getElementById('user-name').value;
+         alert("User Name: " + userName);
+        console.log("User Name: " + userName);
+    </script> -->
+    <!-- <script>
+        var registrationForm = document.getElementById('registration-form');
+        registrationForm.addEventListener('submit', handleFormSubmit);
+
+        function handleFormSubmit(event) {
+            // alert(event)
+            event.preventDefault(); // Prevent the default form submission behavior
+            console.log("Form submission is prevented."); // Display an alert when the form is submitted
+        }
+    </script> -->
+
+    <script>
+         document.getElementById('registration-form').addEventListener('submit', function (event) {
+            // alert(event)
+            event.preventDefault(); // Prevent the default form submission behavior
+            console.log("Form submission is prevented."); // Display an alert when the form is submitted
+            console.log(document.getElementById('user-name').value); // Log the value of the user name input field
+            console.log(document.getElementById('user-password').value); // Log the value of the user password input field
+        });
+    </script>
+
+    <!-- <script>
+        document.getElementById('registration-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            console.log("Form submision prevented.");
+        });
+    </script> -->
+</body>
+</html>

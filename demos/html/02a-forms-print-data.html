@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registration Form</title>
+</head>
+
+<body style="background-color: antiquewhite; font-family: Brush Script MTR,'Times New Roman', Times, serif;">
+    <h1>Our Registration Form</h1>
+    <form id="registration-form" style="margin-left:50px;margin-top: 50px; color:green">
+        <div style="height :50px">
+            Name :
+            <input type="text" id="user-name" required placeholder="Enter Name" value="John Doe"> <br /><br />
+            Password :
+            <input type="password" id="user-password" required value="Password123" placeholder="Enter your password">
+            <br /><br />
+            Gender :
+            <!-- <input type="radio" name="gender" checked required> -->
+                      <input type="radio" name="gender"  >
+                      Male
+            <input type="radio" name="gender">Female <br /><br />
+            <!-- The fieldset element groups related elements in a form
+ The legend element represents a caption for the content of its parent fieldset -->
+            <fieldset style="width:300px">
+                <legend>Food Preference</legend>
+                <input type="radio" checked="checked" name="food" required value="Vegetarian"> Veg
+                <input type="radio" name="food"> Non-Veg <br /><br />
+            </fieldset>
+            <br>
+            Nationality:
+            <select id="nationality" required>
+                <option value="">--Select--</option>
+                <option value="indian" selected>Indian</option>
+                <option value="american">American</option>
+                <option value="british">British</option>
+                <option value="canadian">Canadian</option>
+                <option value="other">Other</option>
+            </select><br /><br />
+
+            Email:
+            <input type="email" id="user-email" required value="john.doe@example.com">
+            <!-- <input id="user-email" required type="text"
+       pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+       value="john.doe@example.com"> -->
+            <br /><br />
+            Phone:
+            <input type="tel" id="user-phone" required pattern="\d{10,15}" value="9876543210"><br /><br />
+            Date of Birth:
+            <input type="date" id="user-dob" required value="1990-01-01"><br /><br />
+            Address:
+            <textarea id="user-address" rows="2" cols="30" required>123 Main Street, City</textarea><br /><br />
+
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+    </form>
+    <div id="form-output" style="margin:50px;padding:50px;color:#333; background-color: aqua;width:300px"></div>
+    </div>
+    <script>
+        // Attach an event listener to the form with ID 'registration-form'
+        // This function will run when the form is submitted
+        document.getElementById('registration-form').addEventListener('submit', function (event) {
+
+            // Prevent the default form submission (page reload or redirect)
+            event.preventDefault();
+
+            // Get the value of the "Name" input field
+            var name = document.getElementById('user-name').value;
+
+            // Get the value of the "Password" input field
+            var password = document.getElementById('user-password').value;
+
+            // Get the selected gender radio button (if any)
+            // querySelector is used to select the checked radio button and returns the first matching element
+         
+            var gender = document.querySelector('input[name="gender"]:checked');
+
+            // Get the selected food preference radio button (if any)
+            var food = document.querySelector('input[name="food"]:checked');
+            // alert("Food preference: " + (food ? food.value : "None"));
+            // Get the selected nationality from the dropdown
+            var nationality = document.getElementById('nationality').value;
+
+            // Get the value of the "Email" input field
+            var email = document.getElementById('user-email').value;
+
+            // Get the value of the "Phone" input field
+            var phone = document.getElementById('user-phone').value;
+
+            // Get the value of the "Date of Birth" input field
+            var dob = document.getElementById('user-dob').value;
+
+            // Get the value of the "Address" textarea
+            var address = document.getElementById('user-address').value;
+
+            // Construct a formatted HTML string displaying the submitted form data
+            var output = '<h3>Form Data:</h3>' +
+                '<b>Name:</b> ' + name + '<br>' +                                // Display name
+                '<b>Password:</b> ' + password + '<br>' +                        // Display password (⚠️ unmasked)
+                '<b>Gender:</b> ' + (gender ? gender.nextSibling.textContent.trim() : '') + '<br>' + // Display selected gender label
+                '<b>Food Preference:</b> ' + (food ? food.nextSibling.textContent.trim() : '') + '<br>' + // Display selected food label
+                '<b>Nationality:</b> ' + nationality.charAt(0).toUpperCase() + nationality.slice(1) + '<br>' + // Capitalize and display nationality
+                '<b>Email:</b> ' + email + '<br>' +                            // Display email
+                '<b>Phone:</b> ' + phone + '<br>' +                            // Display phone number
+                '<b>Date of Birth:</b> ' + dob + '<br>' +                      // Display date of birth
+                '<b>Address:</b> ' + address + '<br>';                         // Display address
+
+            // Insert the output string into the HTML element with ID 'form-output'
+            document.getElementById('form-output').innerHTML = output;
+            console.log(output);
+        });
+
+    </script>
+</body>
+
+</html>
