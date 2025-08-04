@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registration Form</title>
+    <!-- Include bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body style="background-color: antiquewhite; font-family: Brush Script MTR,'Times New Roman', Times, serif;">
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <div class="text-center p-4 mb-4 bg-gradient-primary border rounded shadow" style="background: linear-gradient(90deg, #f8ffae 0%, #43c6ac 100%); color: #1a3c40; letter-spacing: 2px; font-family: 'Segoe Script', 'Brush Script MT', cursive, sans-serif;">
+            <h1 class="display-4 font-weight-bold mb-0" style="text-shadow: 1px 1px 4px #fff, 0 2px 8px #43c6ac;">Our Registration Form</h1>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <form id="registration-form" class="border p-4 bg-white rounded shadow" style="color:green; max-width: 500px;">
+            <!-- ...existing code for form fields and buttons... -->
+            <div class="form-group">
+                <label for="user-name">Name :</label>
+                <input type="text" class="form-control" id="user-name" required placeholder="Enter Name" value="John Doe">
+            </div>
+            <div class="form-group">
+                <label for="user-password">Password :</label>
+                <input type="password" class="form-control" id="user-password" required value="Password123" placeholder="Enter your password">
+            </div>
+            <div class="form-group">
+                <label>Gender :</label><br>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="gender" id="gender-male">
+                    <label class="form-check-label" for="gender-male">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="gender" id="gender-female">
+                    <label class="form-check-label" for="gender-female">Female</label>
+                </div>
+            </div>
+            <fieldset class="form-group border p-2" style="width:100%">
+                <legend class="w-auto px-2">Food Preference</legend>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" checked="checked" name="food" required value="Vegetarian" id="food-veg">
+                    <label class="form-check-label" for="food-veg">Veg</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="food" value="Non-Veg" id="food-nonveg">
+                    <label class="form-check-label" for="food-nonveg">Non-Veg</label>
+                </div>
+            </fieldset>
+            <div class="form-group">
+                <label for="nationality">Nationality:</label>
+                <select id="nationality" class="form-control" required>
+                    <option value="">--Select--</option>
+                    <option value="indian" selected>Indian</option>
+                    <option value="american">American</option>
+                    <option value="british">British</option>
+                    <option value="canadian">Canadian</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="user-email">Email:</label>
+                <input type="email" class="form-control" id="user-email" required value="john.doe@example.com">
+            </div>
+            <div class="form-group">
+                <label for="user-phone">Phone:</label>
+                <input type="tel" class="form-control" id="user-phone" required pattern="\d{10,15}" value="9876543210">
+            </div>
+            <div class="form-group">
+                <label for="user-dob">Date of Birth:</label>
+                <input type="date" class="form-control" id="user-dob" required value="1990-01-01">
+            </div>
+            <div class="form-group">
+                <label for="user-address">Address:</label>
+                <textarea id="user-address" class="form-control" rows="2" required>123 Main Street, City</textarea>
+            </div>
+            <button type="submit" class="btn btn-success mr-2">Submit</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+          </form>
+        </div>
+        <div class="col-md-6 d-flex align-items-start">
+          <div id="form-output" class="mt-4 w-100" style="padding:30px;color:#333; background-color: aqua; max-width:500px; display:none"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+        // Attach an event listener to the form with ID 'registration-form'
+        // This function will run when the form is submitted
+        document.getElementById('registration-form').addEventListener('submit', function (event) {
+
+            // Prevent the default form submission (page reload or redirect)
+            event.preventDefault();
+
+            // Get the value of the "Name" input field
+            var name = document.getElementById('user-name').value;
+
+            // Get the value of the "Password" input field
+            var password = document.getElementById('user-password').value;
+
+            // Get the selected gender radio button (if any)
+            // querySelector is used to select the checked radio button and returns the first matching element
+            var gender = document.querySelector('input[name="gender"]:checked');
+
+            // Get the selected food preference radio button (if any)
+            var food = document.querySelector('input[name="food"]:checked');
+            // alert("Food preference: " + (food ? food.value : "None"));
+            // Get the selected nationality from the dropdown
+            var nationality = document.getElementById('nationality').value;
+
+            // Get the value of the "Email" input field
+            var email = document.getElementById('user-email').value;
+
+            // Get the value of the "Phone" input field
+            var phone = document.getElementById('user-phone').value;
+
+            // Get the value of the "Date of Birth" input field
+            var dob = document.getElementById('user-dob').value;
+
+            // Get the value of the "Address" textarea
+            var address = document.getElementById('user-address').value;
+
+            // Construct a Bootstrap table displaying the submitted form data
+            var output = `
+                <h3>Form Data:</h3>
+                <table class="table table-bordered table-striped">
+                  <tbody>
+                    <tr><th>Name</th><td>${name}</td></tr>
+                    <tr><th>Password</th><td>${password}</td></tr>
+                    <tr><th>Gender</th><td>${gender ? gender.nextElementSibling.textContent.trim() : ''}</td></tr>
+                    <tr><th>Food Preference</th><td>${food ? food.nextElementSibling.textContent.trim() : ''}</td></tr>
+                    <tr><th>Nationality</th><td>${nationality.charAt(0).toUpperCase() + nationality.slice(1)}</td></tr>
+                    <tr><th>Email</th><td>${email}</td></tr>
+                    <tr><th>Phone</th><td>${phone}</td></tr>
+                    <tr><th>Date of Birth</th><td>${dob}</td></tr>
+                    <tr><th>Address</th><td>${address}</td></tr>
+                  </tbody>
+                </table>
+            `;
+            // Insert the output string into the HTML element with ID 'form-output'
+            var formOutput = document.getElementById('form-output');
+            formOutput.innerHTML = output;
+            formOutput.style.display = 'block';
+            console.log(output);
+        });
+
+    </script>
+</body>
+
+</html>
