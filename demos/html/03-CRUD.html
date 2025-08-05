@@ -1,69 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD Operations</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
     <style>
     </style>
 </head>
-<body>
-      <!-- Heading -->
-  <h2>User Management</h2>
-    <!-- Table to display list of users -->
-       <!-- User input form -->
-  <form id="user-form">
-    <!-- Hidden input to store index when editing an existing record -->
-    <input type="hidden" id="editing-index" value="-1">
-    
-    <!-- Input field for user name -->
-    <input type="text" id="name" placeholder="Name" required value="Ben">
-    
-    <!-- Input field for user email -->
-    <input type="email" id="email" placeholder="Email" required value="ben@example.com">
-    
-    <!-- Submit button for saving (create/update) -->
-    <button type="submit">Save</button>
-  </form>
-  <table id="user-table">
-    <thead>
-      <tr>
-        <th>#</th>            <!-- Serial number -->
-        <th>Name</th>         <!-- User name -->
-        <th>Email</th>        <!-- User email -->
-        <th>Actions</th>      <!-- Edit / Delete buttons -->
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>Ben</td>
-        <td>ben@example.com</td>
-        <td class="actions">
-          <button class="edit" data-index="0">Edit</button>
-          <button class="delete" data-index="0">Delete</button>
-        </td>
-      </tr>
-      <tr>
 
-      </tr>
-    </thead>
-    <tbody></tbody> <!-- Body where user rows will be dynamically inserted -->
-  </table>
+<body>
+    <!-- Heading -->
+    <h2>User Management</h2>
+    <!-- Table to display list of users -->
+    <!-- User input form -->
+    <form id="user-form">
+        <!-- Hidden input to store index when editing an existing record -->
+        <input type="hidden" id="editing-index" value="-1">
+
+        <!-- Input field for user name -->
+        <input type="text" id="name" placeholder="Name" required value="Ben">
+
+        <!-- Input field for user email -->
+        <input type="email" id="email" placeholder="Email" required value="ben@example.com">
+
+        <!-- Submit button for saving (create/update) -->
+        <button type="submit">Save</button>
+    </form>
+    <table id="user-table">
+        <thead>
+            <tr>
+                <th>#</th> <!-- Serial number -->
+                <th>Name</th> <!-- User name -->
+                <th>Email</th> <!-- User email -->
+                <th>Actions</th> <!-- Edit / Delete buttons -->
+            </tr>
+            <!-- <tr>
+                <td>1</td>
+                <td>Ben</td>
+                <td>ben@example.com</td>
+                <td class="actions"> -->
+                    <!-- The data-index attribute is used to identify the user being edited or deleted -->
+                    <!-- <button class="edit btn btn-success" data-index="0">Edit</button>
+                    <button class="delete btn btn-danger" data-index="0">Delete</button>
+                </td>
+            </tr> -->
+        </thead>
+        <tbody></tbody> <!-- Body where user rows will be dynamically inserted -->
+    </table>
     <script>
-        let users = [];
+        let users = [
+            { name: 'Ben', email: 'ben@example.com' },
+            { name: 'Alice', email: 'alice@example.com' },
+            { name: 'Charlie', email: 'charlie@example.com' }
+        ];
         const userForm = document.getElementById('user-form');
         const tableBody = document.querySelector('#user-table tbody');
 
-    // Input fields
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
-    const editingIndexInput = document.getElementById('editing-index');
+        // Input fields
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const editingIndexInput = document.getElementById('editing-index');
 
-    function renderTable() {
-        tableBody.innerHTML = ''; // Clear existing rows
-        users.forEach((user,index) => {
-            const row = document.createElement('tr'); // Create a new table row
-        });
-      }
+        // Function to render the entire user table
+        function renderTable() {
+            // Clear existing rows before re-rendering
+            tableBody.innerHTML = '';
+
+            // Loop through each user and add a row to the table
+            users.forEach((user, index) => {
+                const row = document.createElement('tr'); // Create a new table row
+                // The ${} syntax is used to insert dynamic values into the HTML string
+                // The `` template literal allows for multi-line strings and variable interpolation
+                row.innerHTML = `
+          <td>${index + 1}</td>                     <!-- Serial number -->
+          <td>${user.name}</td>                     <!-- User's name -->
+          <td>${user.email}</td>                    <!-- User's email -->
+          <td class="actions">                      <!-- Action buttons -->
+            <button onclick="editUser(${index})" class="btn btn-warning">Edit</button>
+            <button onclick="deleteUser(${index})" class="btn btn-danger">Delete</button>
+          </td>
+        `;
+                tableBody.appendChild(row); // Add the row to the table body
+            });
+        }
+
+        function deleteUser(index) { 
+            // alert(`Deleting user: ${users[index].name}`);
+            let confirmDelete = confirm(`Are you sure you want to delete ${users[index].name}?`);
+            if (confirmDelete) {
+                users.splice(index, 1); // Remove the user from the array
+                renderTable(); // Re-render the table
+            }  
+        }
+        renderTable();
     </script>
 </body>
+
 </html>
