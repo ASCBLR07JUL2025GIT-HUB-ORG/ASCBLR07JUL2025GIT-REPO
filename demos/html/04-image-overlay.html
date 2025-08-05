@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Caption Overlay</title>
+
+  <style>
+    /* Container that wraps the image and the caption */
+    .image-container {
+      position: absolute;    
+             /* Allows absolutely positioned elements (like the caption) inside */
+      /* display: inline-block;        */
+       /* Makes the container only as wide as the image */
+      width: 100%;                 /* Set a fixed width for consistent layout (can be changed as needed) */
+    }
+
+    /* Styling for the image itself */
+    .image-container img {
+      width: 100%;                 /* Ensures the image fills the container width */
+      /* display: block;           */
+       /*   Removes bottom white space caused by inline images */
+    }
+
+    /* Styling for the caption that overlays the image */
+    .caption {
+      position: absolute;          /* Position this div absolutely within its container */
+      bottom: 0;                   
+      /* Align the caption to the bottom of the container */
+      width: 100%;                 /* Make the caption span the full width of the container */
+      
+      background: rgba(1, 1, 1, 0.5); 
+      /* Semi-transparent black background for readability */
+      color: cyan;               
+       /* White text to contrast with the dark background */
+      padding-bottom: 10px; padding-top:10px;              
+       /* Add space around the text */
+      text-align: center;         
+       /* Center the caption text horizontally */
+      font-size: 16px; font-weight: bold;            
+      /* Set a readable font size */
+    }
+  </style>
+</head>
+<body>
+
+    
+  <!-- Image container that holds the image and the caption -->
+  <div class="image-container">
+    <!-- The image itself -->
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="Sample Image">
+    <!-- The caption text that appears at the bottom of the image -->
+    <div class="caption">Sample Caption Text</div>
+  </div>
+
+</body>
+</html>
