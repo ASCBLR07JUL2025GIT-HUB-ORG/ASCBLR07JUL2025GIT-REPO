@@ -1,10 +1,24 @@
 {
 	"folders": [
 		{
+			"name": "ASCBLR07JUL2025GIT-HUB",
+			"path": ".."
+		},
+		{
+			"name": "ASCBLR07JUL2025GIT-REPO",
+			"path": "."
+		},
+		{
+			"name": "ld-jdbc-crud-layered-arch",
 			"path": "../reference-trainings-delivered/ASCGITHUB-main/demos/ld-jdbc-crud-layered-arch"
 		},
 		{
+			"name": "html",
 			"path": "demos/html"
+		},
+		{
+			"name": "now",
+			"path": "../now"
 		}
 	],
 	"settings": {

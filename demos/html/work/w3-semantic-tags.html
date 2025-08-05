@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NYTimes Semantic Tags Example</title>
+  <!-- Minimal style for clarity -->
+  <style>
+    /* 
+     <header> - the header information
+      <nav> - the navigation links
+      <main> - the main content area
+      <aside> - the sidebar content
+      <footer> - the footer information
+      <article> - a self-contained composition
+      <section> - a thematic grouping of content
+      <figure> - self-contained content, like images
+      <figcaption> - caption for a <figure>
+     */
+    header, nav, main, aside, footer, article, section, figure, figcaption { 
+      border: 1px solid #ccc; margin: 8px; padding: 8px; color: red;
+    }
+  </style>
+</head>
+<body>
+    <h1>NYTimes Semantic Tags Example</h1>
+  <header>
+    <h1>The New York Times</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">World</a></li>
+        <li><a href="#">Politics</a></li>
+        <li><a href="#">Opinion</a></li>
+        <li><a href="#">Arts</a></li>
+      </ul>
+    </nav>
+    <form role="search">
+      <label for="search">Search</label>
+      <input id="search" type="search" placeholder="Search...">
+      <button type="submit">Go</button>
+    </form>
+  </header>
+
+  <main>
+    <article>
+      <header>
+        <h2>Main Headline Article</h2>
+        <p><time datetime="2025-07-07">July 7, 2025</time> | By Reporter Name</p>
+      </header>
+      <figure>
+        <img src="headline.jpg" alt="Headline image" />
+        <figcaption>Headline image caption.</figcaption>
+      </figure>
+      <section>
+        <p>This is the main article content, using semantic tags for structure.</p>
+      </section>
+      <footer>
+        <p>Tags: <a href="#">News</a>, <a href="#">World</a></p>
+      </footer>
+    </article>
+
+    <section>
+      <h3>More News</h3>
+      <article>
+        <header>
+          <h4>Secondary Article</h4>
+        </header>
+        <p>Short summary of another news article.</p>
+        <footer>
+          <p><time datetime="2025-07-06">July 6, 2025</time></p>
+        </footer>
+      </article>
+      <article>
+        <header>
+          <h4>Another Article</h4>
+        </header>
+        <p>Brief description of a different news story.</p>
+        <footer>
+          <p><time datetime="2025-07-05">July 5, 2025</time></p>
+        </footer>
+      </article>
+    </section>
+  </main>
+
+  <aside>
+    <section>
+      <h3>Opinion</h3>
+      <article>
+        <header>
+          <h4>Opinion Piece</h4>
+        </header>
+        <p>Opinion content goes here.</p>
+      </article>
+    </section>
+    <section>
+      <h3>Trending</h3>
+      <ul>
+        <li><a href="#">Trending Story 1</a></li>
+        <li><a href="#">Trending Story 2</a></li>
+      </ul>
+    </section>
+  </aside>
+
+  <footer>
+    <nav>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Subscribe</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </nav>
+    <p>&copy; 2025 The New York Times Company</p>
+  </footer>
+</body>
+</html>
