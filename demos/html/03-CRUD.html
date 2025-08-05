@@ -12,23 +12,24 @@
 </head>
 
 <body>
+    <div class="container" class="mt-4">
+        <h1 style="margin-top:50px">
     <!-- Heading -->
     <h2>User Management</h2>
     <!-- Table to display list of users -->
-    <!-- User input form -->
-    <form id="user-form">
-        <!-- Hidden input to store index when editing an existing record -->
-        <input type="hidden" id="editing-index" value="-1">
+  <form id="user-form" class="mb-4">
+    <input type="hidden" id="editing-index" value="">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Name" required value="Ben">
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" placeholder="Email" required value="ben@example.com">
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
 
-        <!-- Input field for user name -->
-        <input type="text" id="name" placeholder="Name" required value="Ben">
-
-        <!-- Input field for user email -->
-        <input type="email" id="email" placeholder="Email" required value="ben@example.com">
-
-        <!-- Submit button for saving (create/update) -->
-        <button type="submit">Save</button>
-    </form>
     <table id="user-table">
         <thead>
             <tr>
@@ -50,13 +51,14 @@
         </thead>
         <tbody></tbody> <!-- Body where user rows will be dynamically inserted -->
     </table>
+    </div>
     <script>
         let users = [
             { name: 'Ben', email: 'ben@example.com' },
             { name: 'Alice', email: 'alice@example.com' },
             { name: 'Charlie', email: 'charlie@example.com' }
         ];
-        const userForm = document.getElementById('user-form');
+        const form = document.getElementById('user-form');
         const tableBody = document.querySelector('#user-table tbody');
 
         // Input fields
@@ -87,6 +89,34 @@
             });
         }
 
+            // Form submit handler (runs on form submission)
+    form.addEventListener('submit', function (e) {
+      e.preventDefault(); // Prevent actual form submission (page reload)
+
+      // Read current input values
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const editingIndex = editingIndexInput.value;
+
+      if (editingIndex === '') {
+        // No index = new user => CREATE operation
+        users.push({ name, email }); // Add new user object to the array
+      } else {
+        // Index exists => UPDATE operation
+        users[editingIndex] = { name, email }; // Overwrite the existing user
+        editingIndexInput.value = ''; // Clear editing mode
+      }
+
+      form.reset();       // Clear input fields
+      renderTable();      // Refresh table to show new/updated user
+    });
+           // Function to pre-fill the form for editing a user
+    function editUser(index) {
+      const user = users[index];              // Get the user object at index
+      nameInput.value = user.name;            // Set the name field
+      emailInput.value = user.email;          // Set the email field
+      editingIndexInput.value = index;        // Set editing index (hidden field)
+    }
         function deleteUser(index) { 
             // alert(`Deleting user: ${users[index].name}`);
             let confirmDelete = confirm(`Are you sure you want to delete ${users[index].name}?`);
