@@ -1,13 +1,12 @@
 package com.demo.service;
 
-import com.demo.entity.Employee;
+import com.demo.entity.EmployeeEntity;
 import com.demo.repository.EmployeeRepository;
-import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
-
+@Service
 public class EmployeeServiceImpl implements  EmployeeService{
     private final EmployeeRepository employeeRepository;
    @Autowired
@@ -15,7 +14,7 @@ public class EmployeeServiceImpl implements  EmployeeService{
         this.employeeRepository = employeeRepository;
     }
     @Override
-    public List<Employee> getAllEmployees() {
+    public List<EmployeeEntity> getAllEmployees() {
         System.err.println("Getting All Employees!");
         return employeeRepository.findAll();
     }

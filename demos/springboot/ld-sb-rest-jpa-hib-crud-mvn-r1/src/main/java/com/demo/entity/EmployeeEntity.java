@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "EMPLOYEES")
-public class Employee {
+public class EmployeeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -16,11 +16,11 @@ public class Employee {
     private String emailId;
 
     // Default constructor
-    public Employee() {
+    public EmployeeEntity() {
     }
 
     // Parameterized constructor
-    public Employee(Long id, String firstName, String lastName, String emailId) {
+    public EmployeeEntity(Long id, String firstName, String lastName, String emailId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
