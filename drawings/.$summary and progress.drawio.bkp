@@ -85,15 +85,6 @@
         <mxCell id="ZBgh9qPo6W1Xte6gY5U4-43" value="SINGLETON" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" vertex="1" parent="1">
           <mxGeometry x="450" y="920" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="g30asUB_LPxTfsh4i9F_-1" value="ADD A LOT" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" vertex="1" parent="1">
-          <mxGeometry x="60" y="990" width="230" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="g30asUB_LPxTfsh4i9F_-2" value="IOC / DI" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" vertex="1" parent="1">
-          <mxGeometry x="310" y="990" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="g30asUB_LPxTfsh4i9F_-3" value="SINGLETON" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;" vertex="1" parent="1">
-          <mxGeometry x="450" y="990" width="120" height="60" as="geometry" />
-        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
