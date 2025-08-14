@@ -15,10 +15,14 @@ public class ModernStreamApiDemo {
     public static void main(String[] args) {
         // 1. Sample data initialization
         List<Transaction> transactions = Arrays.asList(
-                // new Transaction("T1", new BigDecimal(100.50)),
-                // new Transaction("T2", new BigDecimal(375.50)),
-                // new Transaction("T3", new BigDecimal(400.50))
-
+//                new Transaction("T3", new BigDecimal(400.50)),
+                new Transaction("T1", new BigDecimal(100.50)),
+                new Transaction("T3", new BigDecimal(400.50)),
+                new Transaction("T2", new BigDecimal(200.50)),
+                new Transaction("T3", new BigDecimal(300.50)),
+                 new Transaction("T1", new BigDecimal(100.50)),
+                 new Transaction("T2", new BigDecimal(375.50)),
+                 new Transaction("T3", new BigDecimal(400.50)),
                 new Transaction("T1", new BigDecimal(100.50)),
                 new Transaction("T2", new BigDecimal(200.50)),
                 new Transaction("T3", new BigDecimal(300.50)));
@@ -52,6 +56,10 @@ public class ModernStreamApiDemo {
                 Transaction transaction) -> transaction.getAmount().compareTo(BigDecimal.valueOf(400)) < 0;
         status = predicateWithLambdaImplementation.test(new Transaction("T4", new BigDecimal(500.00)));
         System.out.println(status);
+
+        System.err.println("Processing the transactions!");
+        transactions.stream().takeWhile(transaction -> transaction.getAmount().compareTo(BigDecimal.valueOf(400)) < 0 ).
+                forEach(System.out::println);
 
         // The stream() method creates a sequential Stream from the list of
         // transactions.
