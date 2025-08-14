@@ -2,6 +2,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ModernStreamApiDemo",
+            "request": "launch",
+            "mainClass": "com.demo.java21.m2streamapienhancements.ModernStreamApiDemo"
+        },
+        {
+            "type": "java",
             "name": "DynamicPolymorphismEx",
             "request": "launch",
             "mainClass": "com.demo.inheritance.DynamicPolymorphismEx",
