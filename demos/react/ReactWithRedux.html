@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React + Redux Example (CDN)</title>
+    <!-- React + ReactDOM -->
+    <!-- <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script> -->
+    <!-- <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script> -->
+    <!-- Redux Toolkit + React-Redux -->
+    <!-- <script src="https://unpkg.com/@reduxjs/toolkit@latest/dist/redux-toolkit.umd.js" crossorigin></script>
+    <script src="https://unpkg.com/react-redux@8/umd/react-redux.js" crossorigin></script> -->
+    <!-- Babel for JSX -->
+    <!-- <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
+         <script src="./libs/react.development.js"></script>
+    <script src="./libs/react-dom.development.js"></script>
+
+    <!-- Redux Toolkit + React-Redux -->
+    <script src="./libs/redux-toolkit.umd.js"></script>
+    <script src="./libs/react-redux.js"></script>
+
+    <!-- (Optional) Babel if you want to use JSX in browser -->
+    <script src="./libs/babel.min.js"></script>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+      }
+      button {
+        margin: 4px;
+        padding: 6px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const { Provider, useDispatch, useSelector } = ReactRedux;
+      const { configureStore, createSlice } = RTK;
+
+      const counterSlice = createSlice({
+        name: "counter",
+        initialState: { value: 0 },
+        reducers: {
+          incremented: (state) => { state.value += 1; },
+          decremented: (state) => { state.value -= 1; },
+        },
+      });
+
+      const { incremented, decremented } = counterSlice.actions;
+      const store = configureStore({ reducer: { counter: counterSlice.reducer } });
+
+      function Counter() {
+        const value = useSelector((s) => s.counter.value);
+        const dispatch = useDispatch();
+
+        const onIncrement = () => dispatch(incremented());
+        const onDecrement = () => dispatch(decremented());
+        const onIncrementIfOdd = () => { if (value % 2 !== 0) dispatch(incremented()); };
+        const onIncrementAsync = () => {
+          setTimeout(() => {
+            alert("asynchronous called!");
+            dispatch(incremented());
+          }, 5000);
+          console.log("this is fine!");
+        };
+
+        return (
+          <div>
+            <h1>Redux basic example</h1>
+            <p>
+              Clicked: <span>{value}</span> times
+              &nbsp; Clicked: <span>{value}</span> times
+            </p>
+            <div>
+              <button onClick={onIncrement}>+</button>
+              <button onClick={onDecrement}>-</button>
+              <button onClick={onIncrementIfOdd}>Increment if odd</button>
+              <button onClick={onIncrementAsync}>Increment async</button>
+            </div>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(
+        <Provider store={store}>
+          <Counter />
+        </Provider>
+      );
+    </script>
+  </body>
+</html>
