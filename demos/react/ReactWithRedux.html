@@ -2,92 +2,96 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>React + Redux Example (CDN)</title>
-    <!-- React + ReactDOM -->
-    <!-- <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script> -->
-    <!-- <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script> -->
-    <!-- Redux Toolkit + React-Redux -->
-    <!-- <script src="https://unpkg.com/@reduxjs/toolkit@latest/dist/redux-toolkit.umd.js" crossorigin></script>
-    <script src="https://unpkg.com/react-redux@8/umd/react-redux.js" crossorigin></script> -->
-    <!-- Babel for JSX -->
-    <!-- <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
-         <script src="./libs/react.development.js"></script>
-    <script src="./libs/react-dom.development.js"></script>
-
-    <!-- Redux Toolkit + React-Redux -->
-    <script src="./libs/redux-toolkit.umd.js"></script>
-    <script src="./libs/react-redux.js"></script>
-
-    <!-- (Optional) Babel if you want to use JSX in browser -->
-    <script src="./libs/babel.min.js"></script>
-    <style>
-      body {
-        font-family: sans-serif;
-        padding: 20px;
-      }
-      button {
-        margin: 4px;
-        padding: 6px 10px;
-      }
-    </style>
+    <title>Redux basic example (React + CDN)</title>
+    <!-- React + ReactDOM (UMD) -->
+    <!-- The react.development.js has React and ReactDOM in development mode.
+      The development mode is for development purposes only and includes additional warnings and checks like prop type validation. Prop types are a way to validate the props passed to a component to ensure they are of the correct type and shape. The other modes are production mode, which is optimized for performance and does not include these warnings, and test mode, which is designed for running tests and may include additional debugging information. The script to be added for production mode is react.production.min.js and for test mode is react.test.js. -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <!-- The purpose of React and ReactDOM is to provide a way to build user interfaces using components. The React library allows developers to create reusable UI components that can manage their own state and lifecycle. ReactDOM is responsible for rendering these components to the DOM. -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <!-- Redux (UMD) – same API: createStore -->
+    <!-- The Redux library is a predictable state container for JavaScript apps. It helps you manage the state of your application in a consistent way, making it easier to reason about and debug your code.
+     Predictable state management means that the state of your application is always consistent and can only be changed in a predictable way, making it easier to understand how your application works and to find and fix bugs. This is achieved through a unidirectional data flow and strict rules about how state can be updated such as using actions and reducers. The unidirectional data flow means that data flows in one direction, from the top of your application down to the bottom, making it easier to understand how data changes over time. So if a component at the bottom changes the state, it will trigger a re-render of the affected components in a predictable way by following the process of Redux. The process used by redux is called "dispatching actions". -->
+    <script src="https://unpkg.com/redux@4.2.1/dist/redux.js" crossorigin></script>
+    <!-- Babel to run JSX in the browser -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   </head>
   <body>
     <div id="root"></div>
-
+<!-- The type="text/babel" attribute is necessary for Babel to transpile JSX code in the browser.
+ Babel is a JavaScript compiler that allows you to use next-generation JavaScript features and JSX syntax in your code. The Babel standalone version is included in the HTML file via a <script> tag and it runs in the browser, allowing you to write JSX code directly in your HTML file without needing a build step. -->
     <script type="text/babel">
-      const { Provider, useDispatch, useSelector } = ReactRedux;
-      const { configureStore, createSlice } = RTK;
+      // The createStore function is used to create a Redux store.
+      // The Redux here in the syntax is the Redux library imported above from the <script> tag.
+      // Here Redux is a global variable that provides access to the Redux library.
+      // The Redux createStore function is used to create a Redux store.
+      const { createStore } = Redux;
 
-      const counterSlice = createSlice({
-        name: "counter",
-        initialState: { value: 0 },
-        reducers: {
-          incremented: (state) => { state.value += 1; },
-          decremented: (state) => { state.value -= 1; },
-        },
-      });
+      // --- same reducer and initial state as your code ---
+      const initialState = { value: 0 };
 
-      const { incremented, decremented } = counterSlice.actions;
-      const store = configureStore({ reducer: { counter: counterSlice.reducer } });
+      function counterReducer(state = initialState, reaction) {
+        switch (reaction.type) {
+          case "counter/incremented":
+            return { ...state, value: state.value + 1 };
+          case "counter/decremented":
+            return { ...state, value: state.value - 1 };
+          default:
+            return state;
+        }
+      }
 
+      const store = createStore(counterReducer);
+
+      // --- React component that mirrors the store (no new APIs) ---
       function Counter() {
-        const value = useSelector((s) => s.counter.value);
-        const dispatch = useDispatch();
+        // The useState hook is used to manage local state in functional components.
+        // Hooks are a way to use state and other React features without writing a class.
+        const [value, setValue] = React.useState(store.getState().value);
 
-        const onIncrement = () => dispatch(incremented());
-        const onDecrement = () => dispatch(decremented());
-        const onIncrementIfOdd = () => { if (value % 2 !== 0) dispatch(incremented()); };
-        const onIncrementAsync = () => {
-          setTimeout(() => {
-            alert("asynchronous called!");
-            dispatch(incremented());
+        // Subscribe to Redux store on mount; unsubscribe on unmount
+        // The useEffect hook is used to perform side effects in functional components.
+        // Side effects are operations that can affect other components and cannot be done during rendering like data fetching or subscriptions because they rely on external systems. It cannot be used to modify the component's state directly.
+        React.useEffect(() => {
+          const unsubscribe = store.subscribe(() => {
+            setValue(store.getState().value);
+          });
+          return unsubscribe;
+        }, []);
+
+        const increment = () => store.dispatch({ type: "counter/incremented" });
+        const decrement = () => store.dispatch({ type: "counter/decremented" });
+        const incrementIfOdd = () => {
+          if (store.getState().value % 2 !== 0) {
+            store.dispatch({ type: "counter/incremented" });
+          }
+        };
+        const incrementAsync = () => {
+          setTimeout(function () {
+            // alert("asynchronous called!");
+            store.dispatch({ type: "counter/incremented" });
           }, 5000);
-          console.log("this is fine!");
+          // alert("this is fine!");
         };
 
         return (
           <div>
-            <h1>Redux basic example</h1>
             <p>
-              Clicked: <span>{value}</span> times
-              &nbsp; Clicked: <span>{value}</span> times
+              Clicked: <span id="value">{value}</span> times
+              {" "}
+              Clicked: <span id="value1">{value}</span> times
+              {" "}
+              <button id="increment" onClick={increment}>+</button>
+              <button id="decrement" onClick={decrement}>-</button>
+              <button id="incrementIfOdd" onClick={incrementIfOdd}>Increment if odd</button>
+              <button id="incrementAsync" onClick={incrementAsync}>Increment async</button>
             </p>
-            <div>
-              <button onClick={onIncrement}>+</button>
-              <button onClick={onDecrement}>-</button>
-              <button onClick={onIncrementIfOdd}>Increment if odd</button>
-              <button onClick={onIncrementAsync}>Increment async</button>
-            </div>
           </div>
         );
       }
 
       const root = ReactDOM.createRoot(document.getElementById("root"));
-      root.render(
-        <Provider store={store}>
-          <Counter />
-        </Provider>
-      );
+      root.render(<Counter />);
     </script>
   </body>
 </html>
