@@ -1,0 +1,8 @@
+body { font-family: Arial, sans-serif; margin: 20px; }
+.container { max-width: 800px; margin: 0 auto; }
+.form { display: flex; gap: 8px; margin-bottom: 16px; }
+.form input { padding: 6px; }
+button { padding: 6px 12px; margin-left: 4px; cursor: pointer; }
+.table { width: 100%; border-collapse: collapse; }
+.table th, .table td { border: 1px solid #ddd; padding: 8px; }
+.table th { text-align: left; background: purple; }
